@@ -32,7 +32,7 @@ def encode(text: str) -> str:
 
         for i, char in enumerate(morse_symbol):
             morse.write(char)
-            if i < morse_symbol_length:
+            if i < morse_symbol_length-1:
                 morse.write("#")
 
         if next_char == ' ':
@@ -61,9 +61,33 @@ def decode(morse: str) -> bytes:
     result.seek(0)
     return result.read()
 
+
 if __name__ == '__main__':
-    msg = 'Attack at dawn'
-    encoded_msg = encode(msg)
-    print(encoded_msg)
-    decoded_msg = decode(encoded_msg)
-    print(decoded_msg)
+    # Cli code
+    import sys, argparse
+
+    parser = argparse.ArgumentParser(description="Morse code encoder and decoder. By default we encode")
+
+    # Add the -e flag
+    parser.add_argument('-e', '--encode', action='store_true', help='Encode text into morse', default=True)
+
+    # Add the -d flag
+    parser.add_argument('-d', '--decode', action='store_true', help='Decode morse code', default=False)
+
+    # The rest is text
+    parser.add_argument('text', nargs='*', help='Input text to encode or decode (optional) you can also use stdin')
+
+    # Parse the command line arguments
+    args = parser.parse_args()
+
+    if not sys.stdin.isatty():
+        # Read from stdin
+        input_data = sys.stdin.read()
+    else:
+        input_data = args.text
+        input_data = " ".join(input_data)
+
+    if args.encode or not args.encode and not args.decode:
+        print(encode(input_data))
+    else:
+        print(decode(input_data))
