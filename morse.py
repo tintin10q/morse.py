@@ -27,28 +27,32 @@ def encode(text: str) -> str:
         if char not in conversion_table:
             continue
 
-        morse_char = conversion_table[char]
-        morse.write(morse_char)
+        morse_symbol = conversion_table[char]
+        morse_symbol_length = len(morse_symbol)
+
+        for i, char in enumerate(morse_symbol):
+            morse.write(char)
+            if i < morse_symbol_length:
+                morse.write("#")
 
         if next_char == ' ':
             morse.write("#######")  # Space between words is 7
-        elif next_char != char:
-            morse.write("###")
         else:
-            morse.write("#")
+            morse.write("###")  # Space between letters is 3
 
     morse.seek(0)
     return morse.read()
 
 def decode(morse: str) -> bytes:
-    morse = morse.replace("#######", " ")
-    morse = morse.replace("###", "#")
-    words = morse.split(" ")
+    morse = morse.replace("#######", "/")
+    morse = morse.replace("###", " ")
+    morse = morse.replace("#", "")
+    words = morse.split("/")
 
     result = StringIO()
 
     for word in words:
-        for symbol in word.split("#"):
+        for symbol in word.split(" "):
             if symbol not in reverse_conversion_table:
                 continue
             char = reverse_conversion_table[symbol]
