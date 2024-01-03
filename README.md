@@ -32,6 +32,26 @@ for char in self.morse:
     off()
 ```
 
+## CLI
+
+You can use the python script as a cli:
+
+```
+$ python morse.py --help
+usage: morse.py [-h] [-e] [-d] [text ...]
+
+Morse code encoder and decoder. By default we encode
+
+positional arguments:
+  text          Input text to encode or decode (optional) you can also use
+                stdin
+
+options:
+  -h, --help    show this help message and exit
+  -e, --encode  Encode text into morse
+  -d, --decode  Decode morse code
+```
+
 <div style="background-color: red;">
 <img alt="Morse code alphabeth" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/800px-International_Morse_Code.svg.png" style="height: 40rem; mix-blend-mode: multiply; background-color: white">
 </div>
