@@ -75,7 +75,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--decode', action='store_true', help='Decode morse code', default=False)
 
     # The rest is text
-    parser.add_argument('text', nargs='*', help='Input text to encode or decode (optional) you can also use stdin')
+    parser.add_argument('text', nargs='*', help='Input text to encode or decode (optional) you can also use stdin instead')
 
     # Parse the command line arguments
     args = parser.parse_args()
