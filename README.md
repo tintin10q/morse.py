@@ -44,7 +44,7 @@ Morse code encoder and decoder. By default we encode
 
 positional arguments:
   text          Input text to encode or decode (optional) you can also use
-                stdin
+                stdin instead
 
 options:
   -h, --help    show this help message and exit
