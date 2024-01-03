@@ -27,9 +27,9 @@ for char in self.morse:
   if char == '-':
     on_long()  
   elif char == '.':
-      on()
+    on()
   elif char == '#':
-      off()
+    off()
 ```
 
 <div style="background-color: red;">
