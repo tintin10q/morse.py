@@ -10,13 +10,13 @@ The rules of morse code are like this:
 4. The space between letters is three units
 5. The space between a word is seven letters
 
-I encode spaces a `#` so the message `attack at dawn` becomes:
+I encode spaces as `#` so the message `attack at dawn` becomes:
 
 ```
 .#-###-###-###.#-###-#.#-#.###-#.#-#######.#-###-#######-#.#.###.#-###.#-#-###-#.###
 ```
 
-Having the spaces as # is nice because then you can iterate over the string and you only have to do 2 different sleeps per character. And then a turn off and turn on and turn on long.
+Having the spaces as # is nice because iterating over the string becomes very easy. 
 Something like this:
 
 ```python
